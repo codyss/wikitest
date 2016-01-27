@@ -10,7 +10,7 @@ describe('plus', function () {
     a = 2;
     b = 2;
   });
-  it('sums two twice', function () {
+  xit('sums two twice', function () {
     var result = a + b;
     expect(result).to.equal(4);
   });
@@ -19,7 +19,7 @@ describe('plus', function () {
 
 describe('timer', function () {
     var start, end;
-    it('waits the right amount of time', function (done) {
+    xit('waits the right amount of time', function (done) {
       //grab start time, grab finish time - then subtract
       start = new Date();
       setTimeout(function () {
@@ -38,48 +38,12 @@ describe('for each calls callback each time', function () {
       console.log("I've been run!");
     };
     var spy = chai.spy(test);
-    it('runs four times on a four item array', function () {
+    xit('runs four times on a four item array', function () {
       var four = [1,2,3,4];
       four.forEach(spy);
       expect(spy).to.have.been.called.exactly(4);      
     });
 })
-
-describe('Page model', function() {
-
-    describe('Validations', function() {
-        xit('errors without title', function() {});
-        xit('errors without content', function() {});
-    });
-
-    describe('Statics', function() {
-        describe('findByTag', function() {
-            xit('gets pages with the search tag', function() {});
-            xit('does not get pages without the search tag', function() {});
-        });
-    });
-
-    describe('Methods', function() {
-        describe('findSimilar', function() {
-            xit('never gets itself', function() {});
-            xit('gets other pages with any common tags', function() {});
-            xit('does not get other pages without any common tags', function() {});
-        });
-    });
-
-    describe('Virtuals', function() {
-        describe('route', function() {
-            xit('returns the url_name prepended by "/wiki/"', function() {});
-        });
-    });
-
-    describe('Hooks', function() {
-        xit('it sets urlTitle based on title before validating', function() {});
-    });
-
-});
-
-
 
 // var expect = require('chai').expect;
 // describe('+', function () {
