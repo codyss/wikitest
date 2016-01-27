@@ -102,18 +102,50 @@ describe('Page model', function() {
             it('never gets itself', function(done) {
                 testPage.findSimilar()
                 .then(function(pages){
-                    expect(pages).to.have.lengthOf(1);
+                    expect(pages[0]).to.not.equal("Title1");
                     done();
                 }).then(null, done);
             });
-            xit('gets other pages with any common tags', function() {});
-            xit('does not get other pages without any common tags', function() {});
+            it('gets other pages with any common tags', function(done) {
+                testPage.findSimilar()
+                .then(function(pages){
+                    expect(pages[0].title).to.equal("Title Sim");
+                    done();
+                }).then(null, done);
+            });
+            it('does not get other pages without any common tags', function(done) {
+                testPage.findSimilar()
+                .then(function(pages){
+                    expect(pages[0].title).to.not.equal("Title Not Sim");
+                    done();
+                }).then(null, done);                
+            });
         });
     });
 
     describe('Virtuals', function() {
+        var testPage;
+        beforeEach(function(done) {
+            Page.remove({})
+            .then(function(){
+                done();
+            })
+        });
+        beforeEach(function(done) {
+            testPage = new Page({
+                title: "Title1",
+                content: "Content1",
+                tags: ["Cool", "Cold"]
+            });
+            testPage.save(function(){
+                done();
+            });            
+        });
         describe('route', function() {
-            xit('returns the url_name prepended by "/wiki/"', function() {});
+            it('returns the url_name prepended by "/wiki/"', function() {
+                console.log(testPage);
+                expect(testPage.route).to.equal("/wiki/Title1");
+            });
         });
     });
 
