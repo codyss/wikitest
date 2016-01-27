@@ -48,6 +48,7 @@ router.get('/add', function (req, res) {
 router.get('/search', function (req, res, next) {
 
     var tagToSearch = req.query.search;
+    console.log(tagToSearch);
 
     Page.findByTag(tagToSearch)
         .then(function (pages) {
